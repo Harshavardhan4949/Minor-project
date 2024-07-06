@@ -39,9 +39,7 @@ spotify_data[['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness'
                                                                         'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
                                                                         'duration_ms']])
 
-# 2. Log-transform skewed features (optional)
-# If you identify skewed features after imputation, consider log-transformation to normalize the distribution
-# spotify_data['column_name'] = np.log1p(spotify_data['column_name'])
+
 
 # Convert relevant columns to numeric, ensuring any remaining missing values are handled
 for col in spotify_data.columns:
@@ -57,8 +55,7 @@ for col in spotify_data.columns:
 # Print the DataFrame before dropping NaNs
       print("Data before dropping NaNs:\n", spotify_data.head())
 
-# **Adjusted Dropping Strategy:**
-# 1. Handle outliers before dropping NaNs
+
 # Clip outliers to a reasonable range to avoid issues with scaling
 spotify_data = pd.DataFrame(np.clip(spotify_data, -100, 100), columns=spotify_data.columns)  # Clip outliers
 
